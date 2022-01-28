@@ -21,15 +21,16 @@ app.use("/styles", express.static(path.join(__dirname, "./public/index.css")));
 
 app.use("/js", express.static(path.join(__dirname, "./public/index.js")));
 
+
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-app.get("/", function(req, res) {
+app.get("/styles", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.css"));
 });
 
-app.get("/", function(req, res) {
+app.get("/js", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.js"));
 });
 
@@ -79,7 +80,7 @@ app.post('/api/duel', (req, res) => {
             playerRecord.losses++
             res.status(200).send('You lost!')
         } else {
-            playerRecord.losses++
+            playerRecord.wins++
             res.status(200).send('You won!')
         }
 
