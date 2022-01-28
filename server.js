@@ -17,9 +17,6 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 
-app.use("/styles", express.static(path.join(__dirname, "./public/index.css")));
-
-app.use("/js", express.static(path.join(__dirname, "./public/index.js")));
 
 
 app.get("/", function(req, res) {
@@ -33,6 +30,11 @@ app.get("/styles", function(req, res) {
 app.get("/js", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.js"));
 });
+
+app.use("/styles", express.static(path.join(__dirname, "./public/index.css")));
+
+app.use("/js", express.static(path.join(__dirname, "./public/index.js")));
+
 
 app.get('/api/robots', (req, res) => {
     rollbar.info("User clicked on the list of all robots")
